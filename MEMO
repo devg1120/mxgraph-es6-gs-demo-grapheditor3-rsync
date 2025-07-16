@@ -1,0 +1,74 @@
+session remote sync
+
+mxgraph-es6-gs/src/util/mxUndoableEdit.js
+
+
+
+-------------------------
+@mxgraph  alias 導入
+
+./mxgraph-es6-gs 同期開発環境
+
+--vite
+
+xport default defineConfig({
+  root: 'src/grapheditor',
+  resolve: {
+    alias: {
+      '@mxgraph': resolve(__dirname, './mxgraph-es6-gs/src')    // local-pkg
+      //'@mxgraph':  'mxgraph-es6-gs'                               // git node_modules
+    }
+  },
+})
+
+
+
+
+--depend--
+   local mxgraph-es6-gs
+
+
+--vite--
+export default  {
+  root: 'src/grapheditor'
+}
+
+import { resolve } from 'path'
+
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@mxgraph': resolve(__dirname, './mxgraph-es6-gs/src')       
+    }
+  },
+})
+
+
+
+-----------------------------  dev
+npm run dev
+
+open http://127.0.0.1:3000
+
+----------------------------- preview
+npm run build
+
+cd src/grapheditor
+./_dist_set.sh
+
+cd ../..
+
+npm run preview
+
+open http://127.0.0.1:4173
+
+----------------------------- prod
+npm run build
+
+cd src/grapheditor
+./_dist_set.sh
+./_start_httpd.sh
+
+open http://127.0.0.1:3000
+

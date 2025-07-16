@@ -1,0 +1,18 @@
+{
+  "name": "mxgraph-es6-gs-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.2"
+  },
+  "dependencies": {
+    "mxgraph-es6-gs": "https://github.com/devg1120/mxgraph-es6-gs"
+  }
+
+}
