@@ -123,7 +123,13 @@ var mxLoadResources = false;
       themes[Graph.prototype.defaultThemeName] = xhr[1].getDocumentElement();
 
       // Main
-      new EditorUi(new Editor(urlParams["chrome"] == "0", themes));
+      //new EditorUi(new Editor(urlParams["chrome"] == "0", themes));
+
+      let container1 = document.getElementById("container1");
+      let container2 = document.getElementById("container2");
+      new EditorUi(new Editor(urlParams["chrome"] == "0", themes), container1);       
+      new EditorUi(new Editor(urlParams["chrome"] == "0", themes), container2);
+
     },
     function () {
       document.body.innerHTML =

@@ -78,7 +78,7 @@ export class mxUndoableEdit {
                console.log( "-- mxCurrentRootChange");
 	  } else {
 	       console.log("change:", change.constructor);
-
+	       alert(`unknown change:${change.constructor}`);
 	  }
     this.changes.push(change);
   }

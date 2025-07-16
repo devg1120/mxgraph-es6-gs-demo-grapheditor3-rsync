@@ -1,7 +1,74 @@
 session remote sync
 
-mxgraph-es6-gs/src/util/mxUndoableEdit.js
+mxUndoableEdit
+    .add(change) -----------change----------> mxGraphModel
+                                                  .execute(change)
 
+
+------------------------------------ double editor
+index.html
+<body>
+<div id="container1" class="geEditor"></div>
+<div id="container2" class="geEditor"></div>
+
+
+index.js
+      // Main
+      let container1 = document.getElementById("container1");
+      let container2 = document.getElementById("container2");
+      new EditorUi(new Editor(urlParams["chrome"] == "0", themes), container1);
+      new EditorUi(new Editor(urlParams["chrome"] == "0", themes), container2);
+
+------------------------------------ single editor
+index.html
+<body class="geEditor">
+</body>
+
+index.js
+      // Main
+      new EditorUi(new Editor(urlParams["chrome"] == "0", themes));
+
+-------------------------------------
+$ grep -rn  "change.execute()" .
+./view/mxGraphView.js:80:      change.execute();
+./view/mxGraphSelectionModel.js:137:      change.execute();
+./util/mxUndoableEdit.js:99:          change.execute();
+./util/mxUndoableEdit.js:126:          change.execute();
+./model/mxGraphModel.js:719:    change.execute();             ### exec
+
+--------------------------------------------------------------------
+mxgraph-es6-gs/src/model/mxGraphModel.js:719:    change.execute();
+
+ execute(change) {
+    change.execute();              <=***  exec
+    this.beginUpdate();
+    this.currentEdit.add(change);     <=** history
+    this.fireEvent(new mxEventObject(mxEvent.EXECUTE, "change", change)); 
+    this.fireEvent(new mxEventObject(mxEvent.EXECUTED, "change", change));
+    this.endUpdate();
+  }
+
+
+--------------------------------------------------------------------
+mxgraph-es6-gs/src/util/mxUndoableEdit.js
+  add(change) {
+          //console.log("change:", typeof change);    
+          if ( change.constructor == mxChildChange ) {
+               console.log( "-- mxChildChange");
+          } else if ( change.constructor == mxRootChange ) {
+               console.log( "-- mxRootChange");
+          } else if ( change.constructor == mxGeometryChange ) {
+
+          } else if ( change.constructor == mxSelectionChange ) {
+               console.log( "-- mxSelectionChange");
+          } else if ( change.constructor == mxCurrentRootChange ) {
+               console.log( "-- mxCurrentRootChange");
+          } else {
+               console.log("change:", change.constructor);
+               alert(`unknown change:${change.constructor}`);
+          }
+    this.changes.push(change);
+  }
 
 
 -------------------------

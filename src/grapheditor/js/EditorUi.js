@@ -36,6 +36,7 @@ export class EditorUi extends m.mxEventSource {
     //	 m.mxUtils.gtest("gtest TEST OK");
     this.destroyFunctions = [];
     this.editor = editor || new Editor();
+	  
     window.parent.Editor = this.editor;    /* GS-PD */
     window.parent.mxResources = m.mxResources;    /* GS-PD */
     window.parent.Graph = this.editor.graph;    /* GS-PD */
@@ -322,7 +323,7 @@ export class EditorUi extends m.mxEventSource {
           var tmp2 = this.toolbar.sizeMenu;
 
           if (nodes == null) {
-            this.toolbar.createTextToolbar();
+            //this.toolbar.createTextToolbar();
           } else {
             for (var i = 0; i < nodes.length; i++) {
               this.toolbar.container.appendChild(nodes[i]);
