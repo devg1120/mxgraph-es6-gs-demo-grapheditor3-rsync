@@ -6,13 +6,30 @@ mxUndoableEdit
 
 
 ------------------------------------ double editor
-index.html
+
+--style/grapheditor.css
+#container1 {
+        position: relative;
+        height: 50vh;
+        width:100%;
+}
+
+#container2 {
+        position: relative;
+        height: 50vh;
+        width:100%;
+
+}
+
+
+
+--index.html
 <body>
 <div id="container1" class="geEditor"></div>
 <div id="container2" class="geEditor"></div>
 
 
-index.js
+--index.js
       // Main
       let container1 = document.getElementById("container1");
       let container2 = document.getElementById("container2");

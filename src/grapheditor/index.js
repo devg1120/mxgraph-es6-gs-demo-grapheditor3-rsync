@@ -125,6 +125,7 @@ var mxLoadResources = false;
       // Main
       //new EditorUi(new Editor(urlParams["chrome"] == "0", themes));
 
+      // Double
       let container1 = document.getElementById("container1");
       let container2 = document.getElementById("container2");
       new EditorUi(new Editor(urlParams["chrome"] == "0", themes), container1);       
