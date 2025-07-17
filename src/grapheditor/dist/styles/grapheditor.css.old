@@ -1,18 +1,5 @@
 
 
-#container1 {
-	position: relative;
-	height: 50vh;
-	width:100%;
-}
-
-#container2 {
-	position: relative;
-	height: 50vh;
-	width:100%;
-
-}
-
 
 .geEditor {
 	font-family:Helvetica,Arial,sans-serif;
